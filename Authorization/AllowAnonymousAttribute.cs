@@ -2,7 +2,7 @@ using System;
 
 namespace WebApi.Authorization
 {
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
+    [AttributeUsage(AttributeTargets.Method)]
     public class AllowAnonymousAttribute : Attribute
     { }
 }
