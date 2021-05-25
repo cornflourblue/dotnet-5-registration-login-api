@@ -22,16 +22,16 @@ namespace WebApi.Services
     public class UserService : IUserService
     {
         private DataContext _context;
-        private JwtGenerator _jwtGenerator;
+        private IJwtUtils _jwtUtils;
         private readonly IMapper _mapper;
 
         public UserService(
             DataContext context,
-            JwtGenerator jwtGenerator,
+            IJwtUtils jwtUtils,
             IMapper mapper)
         {
             _context = context;
-            _jwtGenerator = jwtGenerator;
+            _jwtUtils = jwtUtils;
             _mapper = mapper;
         }
 
@@ -45,7 +45,7 @@ namespace WebApi.Services
 
             // authentication successful
             var response = _mapper.Map<AuthenticateResponse>(user);
-            response.JwtToken = _jwtGenerator.GenerateToken(user);
+            response.JwtToken = _jwtUtils.GenerateToken(user);
             return response;
         }
 
