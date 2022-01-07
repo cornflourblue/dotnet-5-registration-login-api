@@ -45,7 +45,7 @@ namespace WebApi.Services
 
             // authentication successful
             var response = _mapper.Map<AuthenticateResponse>(user);
-            response.JwtToken = _jwtUtils.GenerateToken(user);
+            response.Token = _jwtUtils.GenerateToken(user);
             return response;
         }
 
